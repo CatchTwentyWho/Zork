@@ -1,10 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Zork
 {
-    class Program
+    internal class Program
     {
-        private static string CurrentRoom => Rooms[Location.Row, Location.Column];
+        private static string CurrentRoom
+        {
+            get
+            {
+                return Rooms[Location.Row, Location.Column];
+            }
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Zork!");
@@ -19,11 +27,11 @@ namespace Zork
                 switch (command)
                 {
                     case Commands.QUIT:
-                        Console.WriteLine = "Thank you for playing!";
+                        Console.WriteLine("Thank you for playing!");
                         break;
 
                     case Commands.LOOK:
-                        Console.WriteLine = "This is an open field west of a white house, with a boarded front door.\nA rubber mat saying 'Welcome to Zork!' lies by the door.";
+                        Console.WriteLine("This is an open field west of a white house, with a boarded front door.\nA rubber mat saying 'Welcome to Zork!' lies by the door.");
                         break;
 
                     case Commands.NORTH:
@@ -59,7 +67,7 @@ namespace Zork
                     break;
 
                 case Commands.EAST when Location.Column < Rooms.GetLength(1) - 1:
-                    Location.Column--;
+                    Location.Column++;
                     break;
 
                 case Commands.WEST when Location.Column > 0:
@@ -78,13 +86,21 @@ namespace Zork
 
         private static bool IsDirection(Commands command) => Directions.Contains(command);
 
-        private static string[] Rooms = new string[5] { "Forest", "West of House", "Behind House", "Clearing", "Canyon View"};
-        private static object Assert;
-    }
+        private static readonly string[,] Rooms =
+        {
+            {"Rocky Trail", "South of House", "Canyon View" },
+            {"Forest", "West of House", "Behind House" },
+            {"Dense Woods", "North of House", "Clearing" }
+        };
 
-    internal class Location
-    {
-        internal static int Row;
-        internal static int Column;
+        private static readonly List<Commands> Directions = new List<Commands>
+        {
+            Commands.NORTH,
+            Commands.SOUTH,
+            Commands.EAST,
+            Commands.WEST
+        };
+
+        private static (int Row, int Column) Location = (1, 1);
     }
 }
