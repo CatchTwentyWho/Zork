@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace Zork
 {
-    internal class Assert
+    public static class Assert
     {
-        internal static void IsTrue(bool v1, string v2)
+        [Conditional("DEBUG")]
+        public static void IsTrue(bool expression, string message = null)
         {
-            throw new NotImplementedException();
+            if (expression == false)
+            {
+                throw new Exception(message);
+            }
         }
     }
 }
