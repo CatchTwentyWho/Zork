@@ -47,6 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assert.cs" />
+    <Compile Include="Movement.cs" />
+    <Compile Include="CommandContext.cs" />
+    <Compile Include="CommandManager.cs" />
+    <Compile Include="Command.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="World.cs" />
     <Compile Include="Game.cs" />
