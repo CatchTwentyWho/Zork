@@ -47,6 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assert.cs" />
+    <Compile Include="Restart.cs" />
+    <Compile Include="Quit.cs" />
+    <Compile Include="Look.cs" />
+    <None Include="Scripts\Hello.csx" />
+    <Compile Include="ZorkAttributes.cs" />
     <Compile Include="Movement.cs" />
     <Compile Include="CommandContext.cs" />
     <Compile Include="CommandManager.cs" />
