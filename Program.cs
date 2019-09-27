@@ -5,7 +5,7 @@ namespace Zork
 {
     internal class Program
     {
-        private static string CurrentRoom
+        public static Room CurrentRoom
         {
             get
             {
@@ -31,7 +31,7 @@ namespace Zork
                         break;
 
                     case Commands.LOOK:
-                        Console.WriteLine("This is an open field west of a white house, with a boarded front door.\nA rubber mat saying 'Welcome to Zork!' lies by the door.");
+                        Console.WriteLine(CurrentRoom.Description);
                         break;
 
                     case Commands.NORTH:
@@ -82,7 +82,7 @@ namespace Zork
             return isValidMove;
         }
 
-        private static Commands ToCommand(string commandString) => (Enum.TryParse<Commands>(commandString, true, out Commands result) ? result : Commands.UNKNOWN);
+        private static Commands ToCommand(string commandString) => (Enum.TryParse(commandString, true, out Commands result) ? result : Commands.UNKNOWN);
 
         private static bool IsDirection(Commands command) => Directions.Contains(command);
 
@@ -96,7 +96,7 @@ namespace Zork
         private static void InitializeRoomDescriptions()
         {
             Rooms[0, 0].Description = "You are on a rock-strewn trail.";
-            Rooms[0, 1].Description = "You are facing the south side of a white house. There is no door here, and all the windows are barred.";
+            Rooms[0, 1].Description = "You are facing the south side of a white house. There is no door here, and all the window are barred.";
             Rooms[0, 2].Description = "You are at the top of the Great Canyon on its south wall.";
 
             Rooms[1, 0].Description = "This is a forest, with trees in all directions around you.";

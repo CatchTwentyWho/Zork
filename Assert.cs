@@ -6,7 +6,7 @@ namespace Zork
     public static class Assert
     {
         [Conditional("DEBUG")]
-        public static void IsTrue(bool expression, string message = null)
+        public static void IsTrue(bool expresion, string message = null)
         {
             if (expression == false)
             {
